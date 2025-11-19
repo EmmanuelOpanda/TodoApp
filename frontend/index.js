@@ -6,19 +6,33 @@ function onAddTodo() {
 
     const li = document.createElement("li");
 
+
     const textSpan = document.createElement("span");
     textSpan.textContent = input.value;
 
+    if (textSpan === "hello") {
+        li.textContent = 'you added one to-do to your dailey routine'
+
+    }
+
+
+
     const deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "✖"; 
+    deleteBtn.textContent = "✖";
+    deleteBtn.style.backgroundColor = 'tomato'
+
 
     const editBtn = document.createElement("button");
-    editBtn.textContent = "✎";
+    editBtn.textContent = `✎ ` + "";
+    editBtn.style.backgroundColor = "#ffcc00"
+
+    editBtn.style.border = 'none'
 
     // --- EDIT FUNCTIONALITY ---
     editBtn.addEventListener("click", () => {
         // If already editing, do nothing
         if (li.classList.contains("editing")) return;
+
 
         li.classList.add("editing");
 
@@ -30,6 +44,7 @@ function onAddTodo() {
         // Create confirm button
         const confirmBtn = document.createElement("button");
         confirmBtn.textContent = "✔";
+        confirmBtn.style.backgroundColor = "green"
 
         // Replace span with input
         li.replaceChild(editInput, textSpan);
@@ -44,6 +59,11 @@ function onAddTodo() {
             li.replaceChild(editBtn, confirmBtn);
 
             li.classList.remove("editing");
+
+
+
+
+
         });
     });
 
@@ -59,3 +79,5 @@ function onAddTodo() {
 
     input.value = "";
 }
+
+
